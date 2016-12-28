@@ -1,0 +1,179 @@
+<?php
+/**
+ * Pacific NM (https://www.pacificnm.com)
+ *
+ * @link      https://github.com/pacificnm/pnm for the canonical source repository
+ * @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
+ * @license
+ */
+?>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+					<?php echo $this->translate('Application Module'); ?> 
+					<small><?php echo $this->entity->getModuleName(); ?></small>
+				</h3>
+				<div class="box-tools">
+					<?php echo $this->deleteButton('module-delete', array('id' => $this->entity->getModuleId())); ?>
+					
+					<?php echo $this->updateButton('module-update', array('id' => $this->entity->getModuleId())); ?>
+				</div>
+			</div>
+			<div class="box-body box-profile">
+				<h3 class="profile-username text-center"><?php echo $this->entity->getModuleName(); ?></h3>
+				<p class="text-muted text-center"><?php echo $this->entity->getModuleVersion(); ?></p>
+				<ul class="list-group list-group-unbordered">
+				<li class="list-group-item">
+						<b><?php echo $this->translate('Module Id'); ?>:</b> <?php echo $this->entity->getModuleId(); ?>
+					</li>
+					<li class="list-group-item">
+						<b><?php echo $this->translate('Module Name'); ?>:</b> <?php echo $this->entity->getModuleName(); ?>
+					</li>
+					<li class="list-group-item">
+						<b><?php echo $this->translate('Module Version'); ?>:</b> <?php echo $this->entity->getModuleVersion(); ?>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+					<?php echo $this->translate('Module Controllers'); ?> 
+				</h3>
+				<div class="box-tools">
+					<?php echo $this->createButton('controller-create', array(), array('query' => array('module-id' => $this->entity->getModuleId()))); ?>
+				</div>
+			</div>
+			<?php if($this->controllerEntitys->count() == 0): ?>
+			<div class="box-body">
+				<div class="alert alert-info">
+					<p>
+						<i class="fa fa-info-circle" aria-hidden="true"></i> 
+						<?php echo $this->translate('No controllers found'); ?>
+					</p>
+				</div>
+			</div>
+			<?php else: ?>
+			<div class="box-body  no-padding">
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-bordered table-hover table-striped table-condensed">
+							<thead>
+								<tr>
+									<th><?php echo $this->translate('Module'); ?></th>
+                                    <th><?php echo $this->translate('Name'); ?></th>
+                                    <th><?php echo $this->translate('Version'); ?></th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php foreach($this->controllerEntitys as $entity): ?>
+								<tr>
+									<td>
+										<a href="<?php echo $this->url('module-view', array('id' => $entity->getModuleId())); ?>" title="<?php echo $this->translate('View'); ?>">
+											<?php echo $entity->getModuleEntity()->getModuleName(); ?>
+										</a>
+									</td>
+									<td>
+										<a href="<?php echo $this->url('controller-view', array('id' => $entity->getControllerId())); ?>" title="<?php echo $this->translate('View'); ?>">
+											<?php echo $entity->getControllerName(); ?>	
+										</a>
+									</td>
+									<td><?php echo $entity->getModuleEntity()->getModuleVersion(); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+					<?php echo $this->translate('Module Pages'); ?>
+				</h3>
+				<div class="box-tools">
+					<?php echo $this->createButton('page-create'); ?>
+				</div>
+			</div>
+			<?php if($this->pageEntitys->count() == 0): ?>
+			<div class="box-body">
+				<div class="alert alert-info">
+					<p>
+						<i class="fa fa-info-circle" aria-hidden="true"></i> 
+						<?php echo $this->translate('No pages found'); ?>
+					</p>
+				</div>
+			</div>
+			<?php else: ?>
+			<div class="box-body  no-padding">
+				<div class="row">
+					<div class="col-xs-12">
+						<table
+							class="table table-bordered table-hover table-striped table-condensed">
+							<thead>
+								<tr>
+									<th><?php echo $this->translate('Name'); ?></th>
+									<th><?php echo $this->translate('Title'); ?></th>
+									<th><?php echo $this->translate('Sub Title'); ?></th>
+									<th><?php echo $this->translate('Icon'); ?></th>
+									<th><?php echo $this->translate('Menu'); ?></th>
+									<th><?php echo $this->translate('Sub Menu'); ?></th>
+									<th><?php echo $this->translate('Type'); ?></th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php foreach($this->pageEntitys as $entity): ?>
+								<tr>
+									<td>
+										<a href="<?php echo $this->url('page-view', array('id' => $entity->getPageId())); ?>" 
+											title="<?php echo $this->translate('View Details'); ?>">
+											<?php echo $entity->getPageName(); ?>
+										</a>
+									</td>
+									<td><?php echo $entity->getPageTitle(); ?></td>
+									<td><?php echo $entity->getPageSubtitle(); ?></td>
+									<td><?php echo $entity->getPageIcon(); ?></td>
+									<td><?php Echo $entity->getPageMenu(); ?></td>
+									<td><?php echo $entity->getPageMenuSub(); ?></td>
+									<td><?php echo $entity->getPageType(); ?></td>
+								</tr>
+							<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 text-center">
+							<?php echo $this->Paginator(
+							    $this->itemCountPerPage, 
+							    $this->itemCount, 
+							    $this->pageCount, 
+							    $this->page, 
+							    $this->routeParams,
+							    $this->queryParams);
+                        ?>
+					</div>
+				</div>
+			</div>
+			<?php endif;?>
+		</div>
+	</div>
+</div>
