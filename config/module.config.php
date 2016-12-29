@@ -3,7 +3,7 @@ return array(
     'module' => array(
         'Module' => array(
             'name' => 'Module',
-            'version' => '1.0.3',
+            'version' => '1.0.4',
             'install' => array(
                 'require' => array(),
                 'sql' => 'sql/module.sql'
