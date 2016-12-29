@@ -11,21 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-    "zendframework/zendframework" : "~2.5",
-    	"pacificnm/pacificnm-acl" : "dev-master",
-    	"pacificnm/pacificnm-action" : "dev-master",
-    	"pacificnm/pacificnm-admin" : "dev-master",
-    	"pacificnm/pacificnm-apllication" : "dev-master",
-    	"pacificnm/pacificnm-auth" : "dev-master",
-    	"pacificnm/pacificnm-config" : "dev-master",
-    	"pacificnm/pacificnm-controller" : "dev-master",
-    	"pacificnm/pacificnm-cron" : "dev-master",
-    	"pacificnm/pacificnm-history" : "dev-master",
-    	"pacificnm/pacificnm-install" : "dev-master",
-    	"pacificnm/pacificnm-log" : "dev-master",
-    	"pacificnm/pacificnm-menu" : "dev-master",
-    	"pacificnm/pacificnm-menu-item" : "dev-master",
-    	"pacificnm/pacificnm-page" : "dev-master",
-    	"pacificnm/pacificnm-update" : "dev-master"
+		"php" : ">=5.5"
     }
 }
