@@ -368,7 +368,7 @@ return array(
     ),
     'view_manager' => array(
         'controller_map' => array(
-            'Pacificnm\{$moduleName}' => true
+            'Pacificnm\\{$moduleName}' => true
         ),
         'template_map' => array(
             'pacificnm/{$viewName}/create/index' => __DIR__ . '/../view/{$viewName}/create/index.phtml',
